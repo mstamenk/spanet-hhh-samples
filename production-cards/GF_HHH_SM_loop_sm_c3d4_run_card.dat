@@ -23,13 +23,13 @@
 #*********************************************************************
 # Run to generate the grid pack                                      *
 #*********************************************************************
-  False     = gridpack  !True = setting up the grid pack
+  True     = gridpack  !True = setting up the grid pack
 #*********************************************************************
 # Number of events and rnd seed                                      *
 # Warning: Do not generate more than 1M events in a single run       *
 # If you want to run Pythia, avoid more than 50k events in a run.    *
 #*********************************************************************
-  100 = nevents ! Number of unweighted events requested
+  10000 = nevents ! Number of unweighted events requested
   0   = iseed   ! rnd seed (0=assigned automatically=default))
 #*********************************************************************
 # Collider type and energy                                           *
@@ -38,8 +38,8 @@
 #*********************************************************************
      1        = lpp1    ! beam 1 type
      1        = lpp2    ! beam 2 type
-     6500.0     = ebeam1  ! beam 1 total energy in GeV
-     6500.0     = ebeam2  ! beam 2 total energy in GeV
+     7000.0     = ebeam1  ! beam 1 total energy in GeV
+     7000.0     = ebeam2  ! beam 2 total energy in GeV
 #*********************************************************************
 # Beam polarization from -100 (left-handed) to 100 (right-handed)    *
 #*********************************************************************
@@ -263,5 +263,5 @@
 #          meaningful ONLY if plotted taking matchscale              *
 #          reweighting into account!                                 *
 #*********************************************************************
-   True  = use_syst      ! Enable systematics studies
+   False  = use_syst      ! Enable systematics studies
 #
