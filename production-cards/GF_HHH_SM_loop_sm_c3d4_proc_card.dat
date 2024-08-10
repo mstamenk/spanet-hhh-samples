@@ -1,10 +1,41 @@
-set group_subprocesses Auto 
-set ignore_six_quark_processes False 
-set loop_optimized_output True 
-set complex_mass_scheme False 
+set group_subprocesses Auto
+set ignore_six_quark_processes False
+set low_mem_multicore_nlo_generation False
+set complex_mass_scheme False
+set include_lepton_initiated_processes False
+set gauge unitary
+set loop_optimized_output True
+set loop_color_flows False
+set max_npoint_for_channel 0
+set default_unset_couplings 99
+set max_t_for_channel 99
+set zerowidth_tchannel True
+set nlo_mixed_expansion True
+import model sm
+define p = g u c d s u~ c~ d~ s~
+define j = g u c d s u~ c~ d~ s~
+define l+ = e+ mu+
+define l- = e- mu-
+define vl = ve vm vt
+define vl~ = ve~ vm~ vt~
+set group_subprocesses Auto
+set ignore_six_quark_processes False
+set loop_optimized_output True
+set complex_mass_scheme False
 import model loop_sm_c3d4
 define lep = e+ e- mu+ mu-
 define nus = ve~ vm~ ve vm
-generate p p > h h h [QCD]
-output GF_HHH_loop_sm_c3d4 -nojpeg 
-
+generate p p > h h h [noborn=QCD]
+output GF_HHH_loop_sm_c3d4-spanet -nojpeg
+launch
+	shower=Pythia8
+	detector=Delphes
+	madspin=ON
+	done
+	../production-cards/param_card.dat
+	set param_card mass 25 150.0
+	../production-cards/GF_HHH_SM_loop_sm_c3d4_run_card.dat
+	../production-cards/delphes_card_CMS.tcl
+	../production-cards/madspin_card.dat
+	done
+	
